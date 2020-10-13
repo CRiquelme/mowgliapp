@@ -1,9 +1,8 @@
-const { Store } = require("vuex");
-
 import Vue from 'vue'
 import Vuex from 'vuex'
-import user form './user'
-import utils form './utils'
+import { auth } from '../firebase'
+import user from './user'
+import utils from './utils'
 
 
 Vue.use(Vuex)
@@ -12,8 +11,14 @@ const store =  new Vuex.Store({
     state: {},
     mutations: {},
     actions: {
-        checkAuth() {
-
+        checkAuth({commit}) {
+            auth.onAuthStateChanged(function (user){
+                if(user) {
+                    commit('user/setUser', user)
+                } else {
+                    commit('user/setUser', null)
+                }
+            })
         }
     },
     modules: {

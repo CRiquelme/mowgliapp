@@ -1,3 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .input {
+    @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight;
+  }
+  .input-error {
+    @apply appearance-none block w-full bg-white text-gray-700 border rounded py-3 px-4 mb-3 leading-tight border-red-600;
+  }
+  .label-error {
+    @apply text-red-500 block tracking-wide text-xs font-bold mb-2;
+  }
+  .mensaje-error {
+    @apply text-red-500 text-xs italic;
+  }
+}
